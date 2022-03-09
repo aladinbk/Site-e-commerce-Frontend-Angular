@@ -1,0 +1,215 @@
+<div class="wrapper">
+        <app-sidebar></app-sidebar>
+    
+    <div class="content-wrapper">
+    <div class="container">
+      <p></p>
+      <div class="col-md-9 col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="font-size:20px; color: rgb(23, 23, 63);">Ajouter un Nouveau produit</div>
+          <div class="panel-body">
+                <form #f="ngForm" (ngSubmit)="onsaveProduit(f.value)">
+                      <div class="row">
+                      <div class="col-md-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title" style="color: midnightblue;">Nom du produit
+                              <small></small>
+                            </h3>
+                            <!-- tools box -->
+                            <div class="pull-right box-tools">
+                              <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                      title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                    
+                            </div>
+                            <!-- /. tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body pad">
+                            <div class="form-group has-feedback">
+                              <input class="form-control" placeholder="Saisir le nom du produit" type="text" name="name" required ngModel>
+                             
+                            </div>
+                           
+                          </div>
+                        </div>
+                        <!-- /.box -->
+                      </div>
+                      </div>
+                   
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title" style="color: midnightblue;">Description
+                              <small></small>
+                            </h3>
+                            <!-- tools box -->
+                            <div class="pull-right box-tools">
+                              <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                      title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                    
+                            </div>
+                            <!-- /. tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body pad">
+                            <div class="form-group has-feedback">
+                              <textarea class="textarea" placeholder="Saisir la description du produit"
+                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name="description" required ngModel></textarea>
+                                  
+                                      </div>
+                          </div>
+                        </div>
+                        <!-- /.box -->
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title" style="color: midnightblue;">Ancien Prix
+                              <small></small>
+                            </h3>
+                            <!-- tools box -->
+                            <div class="pull-right box-tools">
+                              <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                      title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                    
+                            </div>
+                            <!-- /. tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body pad">
+                            <div class="form-group has-feedback">
+                              <input class="form-control" placeholder="Saisir le prix réel du produit"  type="number" name="curentprix" required ngModel>
+                         
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.box -->
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title" style="color: midnightblue;">Comission
+                              <small></small>
+                            </h3>
+                            <!-- tools box -->
+                            <div class="pull-right box-tools">
+                              <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                      title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                    
+                            </div>
+                            <!-- /. tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body pad">
+                            <div class="form-group has-feedback">
+                              <input class="form-control" placeholder="Saisir le pourcentage de réduction du produit"  type="number" name="commision" required ngModel>
+                           
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.box -->
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="box">
+                          <div class="box-header">
+                            <h3 class="box-title" style="color: midnightblue;">Prix Réel
+                              <small></small>
+                            </h3>
+                            <!-- tools box -->
+                            <div class="pull-right box-tools">
+                              <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                      title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                    
+                            </div>
+                            <!-- /. tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body pad">
+                            <div class="form-group has-feedback">
+                              <input class="form-control" placeholder="Saisir le prix réel du produit"  type="number" name="newprix" required ngModel>
+                             
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.box -->
+                        </div>
+                    </div>
+                    <div class="box box-default">
+                      <label style="color: red; font-size: 8px;">* Il faut choisir une catégorie</label>
+                    <div class="box-header with-border" style="color: midnightblue;">
+                      <h3 class="box-title">Associer a Une Catégorie</h3>
+                
+                      <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                      </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="row"> 
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <select class="form-control" style="width: 100%;" name="id" [(ngModel)]="id">
+                              <option  [value]="1" selected="selected">HYDRAFACIALE 6EN1</option>
+                              <option  [value]="2">HYDRAFACIALE 10EN1</option>
+                              <option  [value]="3">HYDRAFACIALE INTELLIGENTE</option>
+                              <option  [value]="4">LIPOCAVITATION</option>
+                              <option  [value]="5">CRYOLIPOLYSE</option>
+                              <option  [value]="6">MICRONEEDLING RADIO FREQUENCE</option>
+                              <option  [value]="7">PLASMA PEN</option>
+                              <option  [value]="8">DERMA PEN</option>
+                              <option  [value]="9">MICROBLADING</option>
+                              <option  [value]="10">AIGUILLE</option>
+                              <option  [value]="11">SOINS DE VISAGE</option>
+                              <option  [value]="12">MASQUE</option>
+                              <option  [value]="13">SERUMES ET ESSENCES</option>
+                              <option  [value]="14">CREME DE SOINS</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                    <label style="color: midnightblue; font-size: 18px;">vos catégories enregistrée pour le moment sont :</label>
+                    <table *ngIf="categories" class="table table-striped">
+                      <tr>
+                       <th>ID</th><th>Nom</th>
+                      </tr>
+                    <tr *ngFor="let c of categories">
+                      <td>{{c.id}}</td>
+                      <td>{{c.name}}</td>
+                    </tr>
+                    </table>
+    
+                  </div>
+              
+                  <button class="btn btn-sucess pull-right" type="submit">Save</button>
+                </form>
+              
+          </div>
+       </div>
+    
+    
+      </div>
+    </div>
+    
+    
+    </div>
+    
+    </div>
+    
+    

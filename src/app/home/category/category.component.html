@@ -1,0 +1,86 @@
+<app-header></app-header>
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/">Products</a></li>
+      <li class="breadcrumb-item active">Product List</li>
+    </ul>
+  </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Product List Start -->
+<div class="product-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+              <app-call-us></app-call-us>
+              <hr>
+            <div class="product-view-top">
+              <div class="row">
+                <div class="col-md-12">
+                <div class="col-md-8">
+                    <form #f="ngForm"  (ngSubmit)="f.form.valid && onChercher(f.value)">      
+                  <div class="product-search">
+                    <input type="text"placeholder="Search" value="Search" name="keyword" ngModel >
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </div>
+                </form>
+                </div>
+                <div class="col-md-4">
+                  <div class="product-short">
+                    <div class="dropdown">
+                      <div class="dropdown-toggle" data-toggle="dropdown">{{sortedBy}}</div>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a (click)="sortBy('curentprix','asc', 'Prix le plus bas')" class="dropdown-item">Prix le plus bas</a>
+                        <a (click)="sortBy('curentprix','desc', 'Prix le plus élevé')" class="dropdown-item">Prix le plus élevé</a>
+                        <a (click)="sortBy('id','desc', 'Le plus récent')" class="dropdown-item">Le plus récent</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+           
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="products">
+            <div class="col-sm-3" *ngFor="let c of products">
+            <div class="product-item " >
+              <div class="product-title">
+                <a>{{c.name.substr(0,25)}} ...</a>
+
+              </div>
+              <div class="product-image" style="cursor: pointer;" (click)="detailsproduit(c)">
+                <a>
+                  <img
+                       src="{{this.productService.host+'/photoOffres/'+ c.id +'?ts='+getTS()}}"
+                       title="Product Image"/>
+                </a>
+                <div class="product-action">
+                  
+                  <a><i class="fa fa-heart"></i></a>
+                  <a><i class="fa fa-search"></i></a>
+                </div>
+              </div>
+              <div class="product-price">
+                <h3>{{c.newprix |number:'0.00'}}<span> DT</span></h3>
+                <a class="btn"><i class="fa fa-shopping-cart"></i>Commander</a>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,139 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="content-wrapper">
+      <section class="content-header">
+          <h1>
+              Gestion des produits
+       
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+            <li class="active">Gestion des produits</li>
+          </ol>
+        </section>
+    <!--Show Deals En Cours Dans Un Tableau-->
+    <div class="container">
+        <p></p>
+        <div class="panel panel-primary">
+              <div class="panel-heading">Deals En Cours</div>
+                            
+                                <div class="panel-body">
+                                  <button class="btn btn-danger" (click)="gettousoffres()">Refresh Data</button>
+                                </div>
+                                <div class="panel-body">
+                                <form #f="ngForm"  (ngSubmit)="f.form.valid && onChercher(f.value)">
+                                <div class="form-group">
+                                <label>Nom du Produit : </label>
+                                <input type="text" name="keyword" ngModel>
+                                <button type="submit" class="glyphicon glyphicon-search"></button>
+                                </div>
+                                </form>  
+                                <table  class="table table-striped">
+                                   <tr>
+                                    <th style="font-size: 16px;">ID</th><th style="font-size: 16px;">NAME</th><th style="font-size: 16px;">Description</th><th style="font-size: 16px;">Nom Photo Principale</th><th style="font-size: 16px;">Photo Principale</th><th style="font-size: 16px;">Prix Actuel</th><th style="font-size: 16px;">Promotion</th><th style="font-size: 16px;">New prix</th> <th style="font-size: 16px;">Actions</th>
+                                   </tr>
+                                 <tr *ngFor="let o of offres">
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);">{{o.id}}</td>
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);">{{o.name}}</td>
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);">{{o.description}}</td>
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);">{{o.photoName}}</td>
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);"><img class="img-thumbnail img-rounded btn"   height="100" width="100" (click)="onOffresDetails(o)" src="{{this.productService.host+'/photoOffres/'+o.id +'?ts='+getTS()}}"/></td>
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);">{{o.curentprix|number:'0.00'}} DT</td>
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);">{{o.commision}}%</td>
+                                   <td style="font-size: 14px; color: rgb(39, 0, 0);">{{o.newprix|number:'0.00'}} DT</td>
+                                 
+                                  <td>
+                                    
+                                      <a (click)="onDeleteOffre(o)" class="clickable">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                      </a>    
+                                 
+                                   </td>
+                                 </tr>
+                                </table>
+                                <ul *ngIf="pages" class="nav nav-pills">
+                                 <li class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages; let i=index">
+                                  <a (click)="onPageoffres(i)">{{i}}</a> 
+                                 </li>
+                                </ul>
+                                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="box"> 
+            <div>
+            <div class="box-header with-border">
+              
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-wrench"></i></button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                    <section class="content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box">               
+                                 <div>
+                                  <div *ngFor="let o of offres">
+                                   <div class="col-md-3">
+                                    <div class="panel panel-default heighted">
+                                     <div class="panel-heading">{{o.name}}</div>
+                                      <div class="panel-body">
+                                       <img class="img-thumbnail img-rounded btn" (click)="onOffresDetails(o)"  height="150" src="{{this.productService.host+'/photoOffres/'+o.id +'?ts='+getTS()}}"/>       
+                                           <div style="position: relative; float: right;">
+                                              <button class="btn btn-danger" (click)="onOffresDetails(o)">VOIR LE DEAL</button>
+                                           </div>
+                    
+                              
+    
+                                           <div>{{o.description}}</div> 
+                                           <div> <label> Prix Actuel : {{o.newprix|number:'0.00'}} DT</label></div>
+                                       
+                          
+                                      </div>
+                                    </div>
+                                   </div>
+                                  </div>
+                                 </div>
+                               </div>
+                            </div>
+                        </div>
+                    </section>
+    
+                </div>
+                <!-- /.col -->
+    
+              </div>
+              <!-- /.row -->
+            </div>  
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+      <!-- /.row -->
+    
+  </div>
+</div>
+<router-outlet></router-outlet>
+    

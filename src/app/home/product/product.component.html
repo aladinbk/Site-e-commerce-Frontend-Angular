@@ -1,0 +1,124 @@
+<div class="featured-product product">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="body">
+          <strong><h2 style="text-align: center;">Un peut d'histoire...</h2></strong>
+          <p style="text-align: center; font-size: 15px ;" class="textdiv" > <strong>Secret luxe skincare </strong> est une société active spécialisée dans la vente des produits et de bien-être, dédiée aux particuliers et aux professionneles</p>
+          <p style="text-align: center; font-size: 15px" class="textdiv">de la beauté et de l'hestétique. </p>
+          <p style="text-align: center; font-size: 15px" class="textdiv">Nous mettons notre savoir-faire à votre service pour vous offrir le choix le plus adapté à vos besoins et aux meilleurs prix. </p>
+          <p style="text-align: center; font-size: 15px" class="textdiv"> <strong>Secret luxe skincare </strong> collabre également avec des centres de formations, des instituts de beauté, magasins d'esthétique... </p>
+        </div>
+      </div>
+    </div>
+    <div class="section-header">
+      <h2>NOS MEILLEURES VENTES :</h2>
+      <div class="float-right" style="margin-top: -35px;">
+
+        <button class="btn" (click)="previous()" style="margin-right: 10px">
+          <i class="fa fa-angle-left"></i>
+        </button>
+        <button class="btn" (click)="next()">
+          <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+    <ngb-carousel *ngIf="products"  #carousel [showNavigationIndicators]="false"
+                   [showNavigationArrows]="false"
+                   [interval]="10000" (slide)="onSlide($event)">
+      <ng-template ngbSlide
+                   *ngFor="let pg of [].constructor(totalPage)" > 
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let img of products;index as i" style="width: 315px;">
+         <div class="product-item">
+            <div class="product-title">
+             <a href="#">{{img.name.substr(0,20)}} ...</a> 
+            </div>
+          <div class="product-image" (click)="detailsproduit(img)" style="cursor: pointer;">
+              <a href="#" tabindex="-1">
+                 <img style="max-width : 100%;display: block;" src="{{this.productService.host+'/photoOffres/'+ img.id +'?ts='+getTS()}}"/>
+              </a>
+              <div class="product-action">
+              <a><i class="fa fa-heart"></i></a>
+              <a><i class="fa fa-search"></i></a>
+              </div>
+          </div>
+          <div class="product-price">
+              <h3>{{img.newprix |number:'0.00'}}<span> DT</span></h3>
+              <a class="btn"><i class="fa fa-shopping-cart"></i>Commander</a>
+            </div>
+         </div>
+      </div>
+    </div>
+      </ng-template>
+    </ngb-carousel>
+    <hr>
+  </div>
+</div>
+
+  
+<div class="call-to-action">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h3><strong>Vous Vouler montrer votre professionnalisme...</strong></h3>
+        <p style="font-size: 15px;">c'est possible grâce au traitement BB Glow !! avec des produits haut de gammes.</p>
+      </div>
+      <div class="col-md-6"> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-detail">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-8">
+              <div class="product-detail-top">
+                  <div class="row align-items-center">
+                      <div class="col-md-12">
+                        <img class="resp" src="/assets/img/bbglow.PNG"   style="width: 830px; height: 580px; cursor:pointer" title="BB glow" />
+
+                      </div>
+                    
+                  </div>
+              </div>
+           
+          </div>
+          
+          <!-- Side Bar Start -->
+          <div class="col-lg-4 sidebar">
+              <div class="sidebar-widget category">
+                  <h2 class="title">Kit BBglow</h2>
+                 <p style="font-size: 15px;"> vous augmenterez <strong>à coup sur vos prestations </strong> avec cette nouvelle méthode révolutionnaire <strong>de rajeunissement du visage.</strong> Cette technique incontournable dans <strong>l'industrie de la beauté</strong> a pris une <strong>ampleur incroyable! </strong></p>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+                </div>
+              
+            
+          </div>
+          <!-- Side Bar End -->
+      </div>
+  </div>
+</div>

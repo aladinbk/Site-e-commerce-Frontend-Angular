@@ -1,0 +1,270 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Modifier un produit
+     
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Dashboard</li>
+          <li class="active">Gestion des produits</li>
+          <li class="active">Modification d'un produit</li>
+        </ol>
+      </section>
+
+
+<!--Show Deals En Cours Dans Un Tableau-->
+<div class="container">
+    <p></p>
+    <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <div *ngIf="curentproduit">
+                                    <div class="panel panel-default"> 
+                                     <div class="panel-heading" style="font-size: 18px; color: rgb(59, 0, 0);"> Fiche du Produit : {{curentproduit.name}}
+                                     </div>
+                                     <div class="panel-heading" style="font-size: 18px; color: rgb(59, 0, 0);"> Catégorie : {{curentproduit._links.category.href}}
+                                    </div>
+                                     <div class="panel-body">
+                                       <div class="col-md-12">
+                                         <div class="col-md-4">
+                                            <table class="table table-striped">
+                                                <th style="font-size: 16px;">Nom du photo1 :</th>
+                                                <td style="font-size: 16px;"> {{curentproduit.photoName}}</td>
+                                              </table>
+                                         <img class="img-thumbnail img-rounded btn"  src="{{this.productService.host+'/photoOffres/'+curentproduit.id +'?ts='+getTS()}}"/>       
+                                           
+                                         <div>      
+                                            <div class="panel-heading" style="color: blue;"> Modifier la photo 1 :
+                                              </div>
+                                          <button *ngIf="!editPhoto" (click)="OnEditPhoto(curentproduit)">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                          </button>
+                                
+                                          <span *ngIf="editPhoto">
+                                            <input type="file" (change)="onSelectedFile($event)">
+                                              <button class="btn btn-success btn-sm" (click)="uploadPhoto()">
+                                                <span class="glyphicon glyphicon-upload"></span>
+                                              </button>
+                                           {{progress}}
+                                          </span>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <table class="table table-striped">
+                                          <th style="font-size: 16px;">Nom du photo2 :</th>
+                                          <td style="font-size: 16px;"> {{curentproduit.photoName2}}</td>
+                                        </table>
+                                      <img src="{{this.productService.host+'/photoOffres2/'+ curentproduit.id +'?ts='+getTS2()}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectedproduit(o.id)">
+                                      <div>      
+                                          <div class="panel-heading" style="color: blue;"> Modifier la photo 2 :
+                                            </div>
+                                       <button *ngIf="!editPhoto" (click)="OnEditPhoto(curentproduit)">
+                                         <span class="glyphicon glyphicon-edit"></span>
+                                       </button>
+                             
+                                       <span *ngIf="editPhoto">
+                                         <input type="file" (change)="onSelectedFile2($event)">
+                                           <button class="btn btn-success btn-sm" (click)="uploadPhoto2()">
+                                             <span class="glyphicon glyphicon-upload"></span>
+                                           </button>
+                                        {{progress2}}
+                                       </span>
+                                 </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    
+                                        <table class="table table-striped">
+                                          <th style="font-size: 16px;">Nom du photo3 :</th>
+                                          <td style="font-size: 16px;"> {{curentproduit.photoName3}}</td>
+                                        </table>
+                                      <img src="{{this.productService.host+'/photoOffres3/'+ curentproduit.id +'?ts='+getTS3()}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectedproduit(o.id)">
+                                      <div>   
+                                          <div class="panel-heading" style="color: blue;"> Modifier la photo 3 :
+                                            </div>  
+                                       <button *ngIf="!editPhoto" (click)="OnEditPhoto(curentproduit)">
+                                         <span class="glyphicon glyphicon-edit"></span>
+                                       </button>
+                             
+                                       <span *ngIf="editPhoto">
+                                         <input type="file" (change)="onSelectedFile3($event)">
+                                           <button class="btn btn-success btn-sm" (click)="uploadPhoto3()">
+                                             <span class="glyphicon glyphicon-upload"></span>
+                                           </button>
+                                        {{progress3}}
+                                       </span>
+                                 </div>
+                                  </div>
+
+
+                                </div>
+                          
+                            </div>
+                            <div class="panel-body">
+                              <div class="col-md-12">
+                                <label style="color: black; font-size: 16px;" >Détails du produit :</label>
+                                    <form #f="ngForm" (ngSubmit)="OnUpdateOffre(f.value)">
+                
+                                              <div class="row">
+                                          <div class="box">
+                                            <div class="box-header">
+                                              <h3 class="box-title">Nom
+                                                <small></small>
+                                              </h3>
+                                              <!-- tools box -->
+                                              <div class="pull-right box-tools">
+                                                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                        title="Collapse">
+                                                  <i class="fa fa-minus"></i></button>
+                                      
+                                              </div>
+                                              <!-- /. tools -->
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body pad">
+                                              <div class="form-group">
+                                                <input class="form-control"  type="text" name="name"ngModel [(ngModel)]="curentproduit.name">
+                        
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <!-- /.box -->
+                                              </div>
+                                              <div class="row">
+                                            <div class="box">
+                                              <div class="box-header">
+                                                <h3 class="box-title">Marque du Deal
+                                                  <small></small>
+                                                </h3>
+                                                <!-- tools box -->
+                                                <div class="pull-right box-tools">
+                                                  <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                          title="Collapse">
+                                                    <i class="fa fa-minus"></i></button>
+                                        
+                                                </div>
+                                                <!-- /. tools -->
+                                              </div>
+                                              <!-- /.box-header -->
+                                              <div class="box-body pad">
+                                                <div class="form-group">
+                                                  <input class="form-control"  type="text" name="lieu" ngModel [(ngModel)]="curentproduit.lieu">
+                        
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <!-- /.box -->
+                                              </div>
+                                              <div class="row">
+                                              <div class="box">
+                                                <div class="box-header">
+                                                  <h3 class="box-title">Description
+                                                    <small></small>
+                                                  </h3>
+                                                  <!-- tools box -->
+                                                  <div class="pull-right box-tools">
+                                                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                            title="Collapse">
+                                                      <i class="fa fa-minus"></i></button>
+                                          
+                                                  </div>
+                                                  <!-- /. tools -->
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body pad">
+                                                  <div class="form-group">
+                                                    <textarea class="textarea" placeholder="Place some text here"
+                                                              style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name="description" ngModel [(ngModel)]="curentproduit.description"></textarea>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <!-- /.box -->
+                                              </div>
+                                              <div class="row">
+                                                <div class="box">
+                                                  <div class="box-header">
+                                                    <h3 class="box-title">Prix Réel
+                                                      <small></small>
+                                                    </h3>
+                                                    <!-- tools box -->
+                                                    <div class="pull-right box-tools">
+                                                      <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                              title="Collapse">
+                                                        <i class="fa fa-minus"></i></button>
+                                            
+                                                    </div>
+                                                    <!-- /. tools -->
+                                                  </div>
+                                                  <!-- /.box-header -->
+                                                  <div class="box-body pad">
+                                                    <div class="form-group">
+                                                      <input class="form-control"  type="number" name="currentprice" ngModel [(ngModel)]="curentproduit.curentprix">
+                              
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- /.box -->
+                                              </div>
+                                              <div class="row">
+                                                  <div class="box">
+                                                    <div class="box-header">
+                                                      <h3 class="box-title">Comission en pourcentage
+                                                        <small></small>
+                                                      </h3>
+                                                      <!-- tools box -->
+                                                      <div class="pull-right box-tools">
+                                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                                title="Collapse">
+                                                          <i class="fa fa-minus"></i></button>
+                                              
+                                                      </div>
+                                                      <!-- /. tools -->
+                                                    </div>
+                                                    <!-- /.box-header -->
+                                                    <div class="box-body pad">
+                                                      <div class="form-group">
+                                                        <input class="form-control"  type="number" name="commision" ngModel [(ngModel)]="curentproduit.commision">
+                                
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <!-- /.box -->
+                                              </div>
+                                              <div class="row">
+                                                <div class="box">
+                                                  <div class="box-header">
+                                                    <h3 class="box-title">New prix
+                                                      <small></small>
+                                                    </h3>
+                                                    <!-- tools box -->
+                                                    <div class="pull-right box-tools">
+                                                      <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                              title="Collapse">
+                                                        <i class="fa fa-minus"></i></button>
+                                            
+                                                    </div>
+                                                    <!-- /. tools -->
+                                                  </div>
+                                                  <!-- /.box-header -->
+                                                  <div class="box-body pad">
+                                                    <div class="form-group">
+                                                      <input class="form-control"  type="number" name="comission" ngModel [(ngModel)]="curentproduit.newprix">
+                              
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- /.box -->
+                                            </div>
+                                              <button class="btn btn-primary pull-right" type="submit">Update</button>
+                                    </form>
+                              </div>
+                            </div>
+                                    </div>
+                                </div>
+                            </div>
+    </div>
+</div>
+</div>
+</div>
